@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  product-info:
+    image: jihyoun0403/product:1.0
+    volumes:
+      - ./product:/home/docker
+    deploy:
+      mode: replicated
+      replicas: 2
+    ports:
+      - 5001:80
+
+  website:
+    image: php:apache
+    volumes:
+      - ./website:/home/docker
+    deploy:
+      mode: replicated
+      replicas: 2
+    ports:
+      - 5000:80
